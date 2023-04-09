@@ -4,10 +4,10 @@ import {classMultiplierMap} from "../utils/classMultiplierMap";
 
 function toVocabularyFile(vocabularyName: string, path: string, pathClassNames: string[]) {
   return `// Auto-generated file. Do not edit.
-import { LanguageSettings } from "@/utils/language/settings";
+import { Settings } from "@/utils/language/settings";
 import { repeat } from "@/utils/utils";
 
-export function ${vocabularyName}({ ${findUsedLanguageSettings(pathClassNames)}, enabledPackages }: LanguageSettings) {
+export function ${vocabularyName}({ ${findUsedLanguageSettings(pathClassNames)}, enabledPackages }: Settings) {
   if (!enabledPackages.has("${path.replaceAll("/", ".")}")) return [];
 
   return [
