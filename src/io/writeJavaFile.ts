@@ -5,14 +5,14 @@ export function writeJavaFile(vocabularyFileImportPaths: string[]) {
   fs.writeFileSync("language/java/java.ts",
       `// Auto-generated file. Do not edit.
 import { repeatArray } from "../../utils";
-import { defaultSettings, VocabularySettings } from "../settings";
+import { Settings } from "@/types";
 import { keywords } from "./keywords";
 ${vocabularyFileImportPaths
           .map(importPath =>
               `import { ${(toPackageName(importPath))} } from "${importPath}";`)
           .join("\n")}
 
-export const java = (settings: VocabularySettings = defaultSettings) =>
+export const java = (settings: Settings) =>
   repeatArray(
     [
       ...keywords(settings),
